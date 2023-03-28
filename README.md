@@ -1,6 +1,4 @@
-# VUYDIA913_bcl2302_groupChanique_VuyiswaDiale_interactive-web-apps
-
-# VUYDIA913_bcl2302_groupChanique_VuyiswaDiale_IWA2
+# VUYDIA913_bcl2302_groupChanique_VuyiswaDiale_IWA02_Challenge_Solutions
 
 **Project Name:** IWA_2 Challenge Solutions
 
