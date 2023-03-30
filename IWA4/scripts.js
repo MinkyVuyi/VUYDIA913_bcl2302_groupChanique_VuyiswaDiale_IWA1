@@ -1,8 +1,8 @@
-const year = 2050;
+const year = 2050; //changed date to year = 2050
 let status = 'student';
 let count = 0;
 
-if (year === 2050) {
+if (year === 2050) { //used === (strict  )
   console.log("January", 'New Year’s Day');
   console.log("March", 'Human Rights Day');
   const month = 'April';
