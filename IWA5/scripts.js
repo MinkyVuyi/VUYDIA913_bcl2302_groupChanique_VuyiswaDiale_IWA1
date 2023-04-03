@@ -1,41 +1,41 @@
-const FREE_WARNING = 'Free shipping only applies to single customer orders';
+// Define constants for warning messages and none selected option
+let FREE_WARNING = 'Free shipping only applies to single customer orders';
 const BANNED_WARNING = 'Unfortunately we do not ship to your country of residence';
-const NONE_SELECTED = 0;
+const NONE_SELECTED = '0';
 
-let shoes = 300 * 1;
-let toys = 100 * 5; // Define the "toys" variable
-let shirts = 150 * NONE_SELECTED; // Use the variable instead of the string
-let batteries = 35 * 2;
-let pens = 5 * NONE_SELECTED;
-
-let shipping = null; // Use let instead of const to allow re-assignment
-let currency = '$';
-
-// Use "===" instead of "=" for equality comparison
-if (location === 'RSA') {
-  shipping = 400;
-  currency = 'R'; // Set currency based on location
-} else if (location === 'NAM') { // Use "else if" for multiple conditions
-  shipping = 600;
-} else {
-  console.log(BANNED_WARNING); // Handle unsupported locations
-}
-
-// Use proper arithmetic operators for calculations
-if (shoes + batteries + pens + shirts > 1000) {
-  if (location === 'NAM' && customers < 2) { // Add missing condition for nested if statement
-    if (location === 'RSA') {
-      shipping = 0 || calcShipping; // Use "||" for OR logic
+// calculating shipping cost based on user's location
+const userShippingcost = () => {
+    if (location === "RSA") { 
+    let userCost = 0 
+    let user = 0
+      console.log(shipping === 400 && currency === 'R') // Log a message if shipping is 400 and currency is R
+      if(userCost >= 1000 && user > 1 ) { // If userCost is >= 1000 and user is > 1
+      console.log(shipping = 0) // Set shipping to 0
+     }
     }
-  }
+    if (location = "NK"){ 
+        console.log(BANNED_WARNING) // Log a message that we do not ship to this country
+    }
+        }
+ 
+
+// Function to check user's cost based on location 
+const checkUserCost = () => {
+if (location = "NAM"){
+    let userCost = 0
+    let user = 0
+    console.log(shipping = 600 && currency === '$')
+    if(userCost >= 1000 && user > 1 ) {
+       console.log(shipping = 0)
+    }
+   }
 }
 
-if (shipping === 0 && customers !== 1) { // Use "===" for equality comparison
-  console.log(FREE_WARNING);
+{
+shoes = 300 * 1;
+toys = 100 * 5;
+batteries = 35 * 2;
+let price = 0;
+const userLocation =  (location === "RSA")
+const calculatePrice = userLocation ? console.log(BANNED_WARNING) : console.log("Price", price = `${shoes + toys + batteries + 400}`)
 }
-
-location === 'NK' ? console.log(FREE_WARNING) : console.log('price', currency, shoes + batteries + pens + shirts + shipping);
-
-customers = 1; // Use integer value instead of string
-location = 'RSA'; // Use let instead of const to allow re-assignment
-currency = null; // Use null value for currency to handle unsupported locations
