@@ -3,7 +3,8 @@ const secondaryPhone = '0219131568'
 
 // Only change below this line
 
-const primaryValid = typeof primaryPhone === 'string' && !isNaN(primaryPhone)
+//added 'string' and && and also !isNaN to check if the primaryPhone is a number or not
+const primaryValid = typeof primaryPhone === 'string' && !isNaN(primaryPhone) 
 const secondaryValid = typeof secondaryPhone === 'string' && !isNaN(secondaryPhone)
 
 console.log('Primary phone is a valid numerical string:', primaryValid)
