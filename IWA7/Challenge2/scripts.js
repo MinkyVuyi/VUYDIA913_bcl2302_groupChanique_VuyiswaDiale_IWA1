@@ -1,4 +1,9 @@
-const nickName= "Timmy";
+const nickName = "Timmy";
 const firstName = "Timothy";
 
-console.log("Good Morning, ${nickname} || {firstName}!")
+
+if (nickName || firstName) {
+  console.log(`Good morning, ${nickName || firstName}!`);
+} else {
+  console.log("Good morning!");
+}
