@@ -25,10 +25,10 @@ const leo = {
 	}
 }
 
-const sarah = { 
-	name: sarahName + sarahSurname,
+const sarah = {  //added the = to assign everything in the {} to the const of sarah
+	name: sarahName + sarahSurname, //
 	age: 62,
-	accessId: '6b279ae5-5657-4240-80e9-23f6b635f7a8',  //made this a string
+	accessId: '6b279ae5-5657-4240-80e9-23f6b635f7a8',  //fixed accessId and I made it a string
 	balance: sarahBalance,
 	address: {
 		number: sarahNumber,
