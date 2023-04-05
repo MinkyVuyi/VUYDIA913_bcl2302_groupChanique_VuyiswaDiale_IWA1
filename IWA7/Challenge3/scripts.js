@@ -13,7 +13,7 @@ const divider = '----------------------------------'
 
 const owed = 'R' + (Math.abs(leoBalance) + Math.abs(sarahBalance)).toFixed(2)
 const leo = `${leoName} ${leoSurname} (Owed R${Math.abs(leoBalance).toFixed(2)})`
-const sarah = `${sarahName} ${sarahSurname} (Owed R${Math.abs(sarahBalance).toFixed(2)})`
+const sarah = `${sarahName.trim()} ${sarahSurname} (Owed R${Math.abs(sarahBalance).toFixed(2)})`
 const total = "Total amount owed: "
 const result = `${leo}\n${sarah}\n\n${divider}\n${total}${owed}\n${divider}`
 
