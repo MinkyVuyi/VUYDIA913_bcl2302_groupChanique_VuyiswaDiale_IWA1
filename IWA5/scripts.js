@@ -1,12 +1,12 @@
 
 const FREE_WARNING = 'Free shipping only applies to single customer orders'
-const BANNED_WARNING = 'Unfortunately we do not ship to your country of residence' 
+const BANNED_WARNING = 'Unfortunately we do not ship to your country of residence' //added a G 
 const NONE_SELECTED = '0'
 
-let location = 'RSA'
+let location = 'RSA'//used let because the location changes
 const customers = 1
-let currency = 'R'
-let shipping = null //Set shipping to 0
+let currency = 'R' //used let also because the currency changes
+let shipping = null //Set shipping to 0 and used let as it will change
 
 /*Fixed the if statement into a more readable code
 *Calculating the shipping cost based on the user's location
@@ -21,7 +21,7 @@ if (location === 'RSA') {
     currency = '$'
 } else if (location === 'NK') {
     console.log(BANNED_WARNING) //Log a message that we do not ship to this country
-} else {
+} else { //this is for other countries besides the ones listed
     shipping = 800
     currency = '$'
 }
