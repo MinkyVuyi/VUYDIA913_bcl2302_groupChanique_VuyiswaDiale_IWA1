@@ -8,13 +8,13 @@ const sarahBalance = '-4582.21000111'
 
 const divider = '----------------------------------'
 
+
 // Only change below this line
 
-const owed = parseInt('R' + leoBalance + sarahBalance).toFixed(2)//added .toFixed(2) in order to set decimal numbers to 2
-const leo = "{leoName} + {leoSurname} + \"Owed\" + \"R\" + {sarahBalance}"
-const sarah = "{leoName} + {surname} + \"Owed\" + \"R\" + {sarahBalance}"
+const owed = 'R' + (Math.abs(leoBalance) + Math.abs(sarahBalance)).toFixed(2)
+const leo = `${leoName} ${leoSurname} (Owed R${Math.abs(leoBalance).toFixed(2)})`
+const sarah = `${sarahName} ${sarahSurname} (Owed R${Math.abs(sarahBalance).toFixed(2)})`
 const total = "Total amount owed: "
-const result = leo + sarah + divider + divider + total + owed + divider
+const result = `${leo}\n${sarah}\n\n${divider}\n${total}${owed}\n${divider}`
 
 console.log(result)
-
