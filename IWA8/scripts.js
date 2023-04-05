@@ -26,11 +26,11 @@ const leo = {
 }
 
 const sarah = {  //added the = to assign everything in the {} to the const of sarah
-	name: sarahName + sarahSurname, //
+	name : sarahName + sarahSurname, /*An '=' can only follow a property name when the containing object literal is part of a destructuring pattern.*/
 	age: 62,
 	accessId: '6b279ae5-5657-4240-80e9-23f6b635f7a8',  //fixed accessId and I made it a string
 	balance: sarahBalance,
-	address: {
+	address : { //added : instead of = as this is not a property name it is an object of sarah property
 		number: sarahNumber,
 		street: sarahStreet,
 		'postal-code': sarahPostal //made postal-code a string
