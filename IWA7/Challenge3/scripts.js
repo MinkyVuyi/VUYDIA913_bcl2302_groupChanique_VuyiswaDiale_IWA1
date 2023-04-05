@@ -10,10 +10,11 @@ const divider = '----------------------------------'
 
 // Only change below this line
 
-const owed = parseInt('R' + leoBalance + sarahBalance)
+const owed = parseInt('R' + leoBalance + sarahBalance).toFixed(2)//added .toFixed(2) in order to set decimal numbers to 2
 const leo = "{leoName} + {leoSurname} + \"Owed\" + \"R\" + {sarahBalance}"
 const sarah = "{leoName} + {surname} + \"Owed\" + \"R\" + {sarahBalance}"
 const total = "Total amount owed: "
 const result = leo + sarah + divider + divider + total + owed + divider
 
 console.log(result)
+
