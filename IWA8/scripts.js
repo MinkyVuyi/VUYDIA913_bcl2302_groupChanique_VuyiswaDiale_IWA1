@@ -28,13 +28,13 @@ const leo = {
 const sarah = { 
 	name: sarahName + sarahSurname,
 	age: 62,
-	accessId: '6b279ae5-5657-4240-80e9-23f6b635f7a8', 
+	accessId: '6b279ae5-5657-4240-80e9-23f6b635f7a8',  //made this a string
 	balance: sarahBalance,
 	address: {
 		number: sarahNumber,
 		street: sarahStreet,
-		'postal-code': sarahPostal
+		'postal-code': sarahPostal //made postal-code a string
 	}
 }
-console.log(leo, leo.address['postal-code'])
+console.log(leo, leo.address['postal-code']) //used [] for the postal-code string to call object value
 console.log(sarah, sarah.address['postal-code'])
