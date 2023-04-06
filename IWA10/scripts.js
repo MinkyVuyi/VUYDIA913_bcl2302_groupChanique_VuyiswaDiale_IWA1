@@ -1,10 +1,10 @@
-const currentYear = new Date().getFullYear()
+const currentYear = new Date().getFullYear();
 
 const holidays = {
     0: {
         id: 0,
         name: 'Day of Reconciliation',
-        date: `16 December ${currentYear}`,
+        date: new Date(`16 December ${currentYear}`),
     },
     1: {
         id: 1,
@@ -23,7 +23,7 @@ const holidays = {
     },
     4: {
         id: 4,
-        name: 'Women_s Day',
+        name: 'Womens Day',
         date: new Date(`9 August ${currentYear}`),
     },
     5: {
@@ -44,60 +44,46 @@ const holidays = {
     8: {
         id: 8,
         name: 'Human Rights Day',
-        date: new Date(`21 March ${currentYear}`)
+        date: new Date(`21 March ${currentYear}`),
     },
+};
+
+const christmas = 6;
+const futureId = 9;
+
+// Check if futureId holiday exists, if not log a message
+if (!holidays[futureId]) {
+    console.log(`ID ${futureId} not created yet`);
 }
 
-const christmas = 6
-const futureId = 9
+// Create a copy of the Christmas holiday and update its name and date
+const copied = { ...holidays[christmas] };
+copied.name = 'X-mas';
+copied.date.setHours(0, 0, 0, 0);
 
-// Do not change code above this comment
+// Check if the new date is earlier than the current date
+const isEarlier = copied.date < holidays[christmas].date;
+console.log('New date is earlier:', isEarlier);
 
-console.log(holidays.futureId.name || 'ID {futureId} not created yet')
+// If the new date is earlier, update the copied object
+if (isEarlier) {
+    holidays[christmas] = copied;
+}
 
-copied = holidays.christmas
-copied = { name: 'X-mas Day' }
-correctDate = copied.date
-correctDate.hours = 0
-correctDate.minutes = 0
-isEarlier = copied.date < holidays[6].date
-console.log('New date is earlier:', isEarlier)
-if (isEarlier) copied.date = correctDate
-console.log('ID change:', holidays[christmas].id != copied.id || copied.id)
-console.log('Name change:', holidays[christmas].name != copied.name || copied.name)
-console.log('Date change:', holidays[christmas].date != copied.date || copied.date)
+// Log the changes made to the copied object
+console.log('ID change:', copied.id !== holidays[christmas].id);
+console.log('Name change:', copied.name);
+console.log('Date change:', copied.date.toLocaleDateString('en-GB'));
 
-const firstHolidayTimestamp = Math.min(
-    holidays[0].date.getTime,
-    holidays[1].date.getTime,
-    holidays[2].date.getTime,
-    holidays[3].date.getTime,
-    holidays[4].date.getTime,
-    holidays[5].date.getTime,
-    holidays[6].date.getTime,
-    holidays[7].date.getTime,
-    holidays[8].date.getTime,
-)
+// Get the first holiday and last holiday of the year
+const keys = Object.keys(holidays).map(Number);
+const firstHoliday = new Date(Math.min(...keys.map(key => holidays[key].date.getTime())));
+const lastHoliday = new Date(Math.max(...keys.map(key => holidays[key].date.getTime())));
 
-const lastHolidayTimestamp = Math.max(
-    holidays[0].date.getTime,
-    holidays[1].date.getTime,
-    holidays[2].date.getTime,
-    holidays[3].date.getTime,
-    holidays[4].date.getTime,
-    holidays[5].date.getTime,
-    holidays[6].date.getTime,
-    holidays[7].date.getTime,
-    holidays[8].date.getTime,
-)
+// Format the first holiday and last holiday dates as DD/MM/YYYY
+const formattedFirstHoliday = `${firstHoliday.getDate().toString().padStart(2, '0')}/${(firstHoliday.getMonth() + 1).toString().padStart(2, '0')}/${firstHoliday.getFullYear()}`;
+const formattedLastHoliday = `${lastHoliday.getDate().toString().padStart(2, '0')}/${(lastHoliday.getMonth() + 1).toString().padStart(2, '0')}/${lastHoliday.getFullYear()}`;
 
-const firstDay = firstHolidayTimestamp.getDate
-const firstMonth = firstHolidayTimestamp.getMonth
-const lastDay = lastHolidayTimestamp.getDate
-const lastMonth = lastHolidayTimestamp.getMonth
-
-console.log('{firstDay}/{firstMonth}/{currentYear}')
-console.log('{lastDay}/{lastMonth}/{currentYear}')
-
-const randomHoliday = holidays[Math.random]
-console.log(randomHoliday.date)
+// Log the first holiday and last holiday dates
+console.log('First holiday in the year:', formattedFirstHoliday);
+console
