@@ -1,10 +1,10 @@
-const currentYear = new Date().getFullYear();
+const currentYear = new Date().getFullYear()
 
 const holidays = {
     0: {
         id: 0,
         name: 'Day of Reconciliation',
-        date: new Date(`16 December ${currentYear}`),
+        date: `16 December ${currentYear}`,
     },
     1: {
         id: 1,
@@ -44,46 +44,36 @@ const holidays = {
     8: {
         id: 8,
         name: 'Human Rights Day',
-        date: new Date(`21 March ${currentYear}`),
+        date: new Date(`21 March ${currentYear}`)
     },
-};
-
-const christmas = 6;
-const futureId = 9;
-
-// Check if futureId holiday exists, if not log a message
-if (!holidays[futureId]) {
-    console.log(`ID ${futureId} not created yet`);
 }
 
-// Create a copy of the Christmas holiday and update its name and date
+const christmas = 6
+const futureId = 9
+
+
+// Do not change code above this comment
+
+console.log(holidays[futureId] ? holidays[futureId].name : `ID ${futureId} not created yet`); // changed the logical OR operator 
+
 const copied = { ...holidays[christmas] };
 copied.name = 'X-mas';
-copied.date.setHours(0, 0, 0, 0);
-
-// Check if the new date is earlier than the current date
-const isEarlier = copied.date < holidays[christmas].date;
+const correctDate = new Date(copied.date);
+correctDate.setHours(0, 0, 0, 0);
+const isEarlier = correctDate < holidays[christmas].date;
 console.log('New date is earlier:', isEarlier);
-
-// If the new date is earlier, update the copied object
 if (isEarlier) {
-    holidays[christmas] = copied;
+  copied.date = correctDate;
 }
 
-// Log the changes made to the copied object
 console.log('ID change:', copied.id !== holidays[christmas].id);
-console.log('Name change:', copied.name);
-console.log('Date change:', copied.date.toLocaleDateString('en-GB'));
+console.log('Name change:', copied.name !== holidays[christmas].name);
+console.log('Date change:', copied.date.getTime() !== holidays[christmas].date.getTime());
 
-// Get the first holiday and last holiday of the year
-const keys = Object.keys(holidays).map(Number);
-const firstHoliday = new Date(Math.min(...keys.map(key => holidays[key].date.getTime())));
-const lastHoliday = new Date(Math.max(...keys.map(key => holidays[key].date.getTime())));
+const firstHoliday = new Date(holidays[0].date);
+const lastHoliday = new Date(holidays[2].date);
+const randomHoliday = new Date(holidays[Math.floor(Math.random() * Object.keys(holidays).length)].date);
 
-// Format the first holiday and last holiday dates as DD/MM/YYYY
-const formattedFirstHoliday = `${firstHoliday.getDate().toString().padStart(2, '0')}/${(firstHoliday.getMonth() + 1).toString().padStart(2, '0')}/${firstHoliday.getFullYear()}`;
-const formattedLastHoliday = `${lastHoliday.getDate().toString().padStart(2, '0')}/${(lastHoliday.getMonth() + 1).toString().padStart(2, '0')}/${lastHoliday.getFullYear()}`;
-
-// Log the first holiday and last holiday dates
-console.log('First holiday in the year:', formattedFirstHoliday);
-console
+console.log('First holiday in the year:', firstHoliday.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }));
+console.log('Last holiday in the year:', lastHoliday.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }));
+console.log('Random holiday:', randomHoliday.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }));
