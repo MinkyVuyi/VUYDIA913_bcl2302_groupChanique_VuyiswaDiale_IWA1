@@ -20,12 +20,12 @@ let totalBiscuitsDelivered = 0;
 let totalBiscuitsOutstanding = 0;
 
 // Loop through each biscuitCount element and calculate total biscuits delivered and outstanding
-biscuitCounts.forEach(function(biscuits) {
-  if (biscuits.dataset.delivered === 'true') {
-    totalBiscuitsDelivered += parseInt(biscuits.dataset.biscuits);
-  } else {
-    totalBiscuitsOutstanding += parseInt(biscuits.dataset.biscuits);
-  }
+biscuitCounts.forEach(function (biscuits) {
+    if (biscuits.dataset.delivered === 'true') {
+        totalBiscuitsDelivered += parseInt(biscuits.dataset.biscuits);
+    } else {
+        totalBiscuitsOutstanding += parseInt(biscuits.dataset.biscuits);
+    }
 });
 
 // Select all DOM elements with data-donuts attribute
@@ -34,12 +34,12 @@ let totalDonutsDelivered = 0;
 let totalDonutsOutstanding = 0;
 
 // Loop through each donutsCount element and calculate total donuts delivered and outstanding
-donutsCounts.forEach(function(donuts) {
-  if (donuts.dataset.delivered === 'true') {
-    totalDonutsDelivered += parseInt(donuts.dataset.donuts);
-  } else {
-    totalDonutsOutstanding += parseInt(donuts.dataset.donuts);
-  }
+donutsCounts.forEach(function (donuts) {
+    if (donuts.dataset.delivered === 'true') {
+        totalDonutsDelivered += parseInt(donuts.dataset.donuts);
+    } else {
+        totalDonutsOutstanding += parseInt(donuts.dataset.donuts);
+    }
 });
 
 /// Select all DOM elements with data-panCakes attribute
@@ -48,15 +48,16 @@ let totalPanCakesDelivered = 0;
 let totalPanCakesOutstanding = 0;
 
 // Loop through each panCakesCount element and calculate total panCakes delivered and outstanding
-panCakesCounts.forEach(function(panCakes) {
-  const panCakesCount = parseInt(panCakes.dataset.panCakes);
-  if (!isNaN(panCakesCount)) {
-    if (panCakes.dataset.delivered === 'true') {
-      totalPanCakesDelivered += panCakesCount;
-    } else {
-      totalPanCakesOutstanding += panCakesCount;
+panCakesCounts.forEach(function (panCakes) {
+    const panCakesCount = parseInt(panCakes.dataset.panCakes);
+    if (!isNaN(panCakesCount)) {
+        if (panCakes.dataset.delivered === 'true') {
+            totalPanCakesDelivered += panCakesCount;
+        } else {
+            totalPanCakesOutstanding += panCakesCount;
+        }
     }
-  }});
+});
 
 // Log the total counts of delivered and outstanding biscuits, donuts, and pancakes
 console.log(`Total biscuits delivered: ${totalBiscuitsDelivered}`);
