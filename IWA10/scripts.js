@@ -135,11 +135,15 @@ const futureId = 9;
 
 // Do not change code above this comment
 
-if (futureId in holidays) {
-    console.log(holidays[futureId].name || `ID ${futureId} not created yet`);
-}
+if (futureId in holidays) { /*used if statement to check if a variable futureId exists in an holidays array or object*/
+    console.log(holidays[futureId].name);
+  } else {
+    console.log(`ID ${futureId} not created yet`);
+  }
+   /*Access the name property of the corresponding object in holidays and log its value*/
 
-let copied = { ...holidays[christmas] }; //using the spread syntax (...) to create a shallow copy of the properties of the christmas object
+
+let copied = { ...holidays[christmas] }; /*using the spread syntax (...) to create a shallow copy of the properties of the christmas object*/
 copied.name = 'X-mas';
 const correctDate = new Date(copied.date);
 correctDate.setHours(0);
@@ -152,6 +156,33 @@ console.log(`Name change: ${copied.name}`);
 console.log(`Date change: ${correctDate.toLocaleDateString('en-GB')}`);
 
 // Get first holiday in the year
+
+ //Calculate the minimum timestamp of holidays
+const firstHolidayTimestamp = Math.min(
+    holidays[0].date.getTime, // Access the "date" property of the first holiday object and get its timestamp
+    holidays[1].date.getTime, // Access the "date" property of the second holiday object and get its timestamp
+    holidays[2].date.getTime, // Access the "date" property of the third holiday object and get its timestamp
+    holidays[3].date.getTime, // Access the "date" property of the fourth holiday object and get its timestamp
+    holidays[4].date.getTime, // Access the "date" property of the fifth holiday object and get its timestamp
+    holidays[5].date.getTime, // Access the "date" property of the sixth holiday object and get its timestamp
+    holidays[6].date.getTime, // Access the "date" property of the seventh holiday object and get its timestamp
+    holidays[7].date.getTime, // Access the "date" property of the eighth holiday object and get its timestamp
+    holidays[8].date.getTime, // Access the "date" property of the ninth holiday object and get its timestamp
+);
+
+// Calculate the maximum timestamp of holidays
+const lastHolidayTimestamp = Math.max(
+    holidays[0].date.getTime, // Access the "date" property of the first holiday object and get its timestamp
+    holidays[1].date.getTime, // Access the "date" property of the second holiday object and get its timestamp
+    holidays[2].date.getTime, // Access the "date" property of the third holiday object and get its timestamp
+    holidays[3].date.getTime, // Access the "date" property of the fourth holiday object and get its timestamp
+    holidays[4].date.getTime, // Access the "date" property of the fifth holiday object and get its timestamp
+    holidays[5].date.getTime, // Access the "date" property of the sixth holiday object and get its timestamp
+    holidays[6].date.getTime, // Access the "date" property of the seventh holiday object and get its timestamp
+    holidays[7].date.getTime, // Access the "date" property of the eighth holiday object and get its timestamp
+    holidays[8].date.getTime, // Access the "date" property of the ninth holiday object and get its timestamp
+);
+
 const holidayIds = Object.keys(holidays).map(Number);
 const firstHolidayId = Math.min(...holidayIds);
 const firstHolidayDate = holidays[3].date;
