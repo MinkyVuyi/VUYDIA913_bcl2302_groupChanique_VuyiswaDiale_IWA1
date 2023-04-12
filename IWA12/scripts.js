@@ -1,5 +1,3 @@
-// scripts.js
-
 const STATUS_MAP = {
     shelf: {
         color: 'green',
@@ -29,35 +27,34 @@ const STATUS_MAP = {
 
 // Edit below line 
 
-status = selector(status)
-reserve = selector(reserve)
-checkout = selector(checkout)
-checkIn = selector(checkIn)
+// Example of updating button properties for book with status 'overdue'
+const status2 = document.getElementById('status2');
+const reserve2 = document.getElementById('reserve2');
+const checkout2 = document.getElementById('checkout2');
+const checkIn2 = document.getElementById('checkIn2');
 
-status = selector(status)
-reserve = selector(reserve)
-checkout = selector(checkout)
-checkIn = selector(checkIn)
 
-status = selector(status)
-reserve = selector(reserve)
-checkout = selector(checkout)
-checkIn = selector(checkIn)
+document.addEventListener('DOMContentLoaded', function () {
+    status2.style.color = STATUS_MAP.overdue.color;
+    reserve2.disabled = !STATUS_MAP.overdue.canReserve;
+    checkout2.disabled = !STATUS_MAP.overdue.canCheckout;
+    checkIn2.disabled = !STATUS_MAP.overdue.canCheckIn;
+});
+function updateButtonProperties(status, statusMap) {
+  const statusElement = document.getElementById(`status${status}`);
+  const reserveElement = document.getElementById(`reserve${status}`);
+  const checkoutElement = document.getElementById(`checkout${status}`);
+  const checkInElement = document.getElementById(`checkIn${status}`);
 
-checkIn.0.color = none
-status.0.style.color = STATUS_MAP.status.color
-reserve.0 = STATUS_MAP.status.canReserver ? 'enabled' : 'disabled'
-checkout.0 = STATUS_MAP.status.canCheckout ? 'enabled' : 'disabled'
-checkIn.0 = STATUS_MAP.status.canCheckIn ? 'enabled' : 'disabled'
+  document.addEventListener('DOMContentLoaded', function () {
+    statusElement.style.color = statusMap.color;
+    reserveElement.disabled = !statusMap.canReserve;
+    checkoutElement.disabled = !statusMap.canCheckout;
+    checkInElement.disabled = !statusMap.canCheckIn;
+  });
+}
 
-checkIn.1.color = none
-status.1.style.color = STATUS_MAP.status.color
-reserve.1 = STATUS_MAP.status.canReserver ? 'enabled' : 'disabled'
-checkout.1 = STATUS_MAP.status.canCheckout ? 'enabled' : 'disabled'
-checkIn.1 = STATUS_MAP.status.canCheckIn ? 'enabled' : 'disabled'
-
-checkIn.2.color = none
-status.2.style.color = STATUS_MAP.status.color
-reserve.2 = STATUS_MAP.status.canReserver ? 'enabled' : 'disabled'
-checkout.2 = STATUS_MAP.status.canCheckout ? 'enabled' : 'disabled'
-checkIn.2 = STATUS_MAP.status.canCheckIn ? 'enabled' : 'disabled'
+// Call the function for each status
+updateButtonProperties(0, STATUS_MAP.shelf);
+updateButtonProperties(1, STATUS_MAP.reserved);
+updateButtonProperties(2, STATUS_MAP.overdue);

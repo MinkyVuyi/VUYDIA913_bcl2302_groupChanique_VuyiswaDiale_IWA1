@@ -1,5 +1,3 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LMS Pro</title>
-    <script src="/scripts.js" defer></script>
+    <script src="scripts.js" defer></script>
   </head>
   <body>
     <div id="book1">
@@ -35,3 +33,34 @@
     </div>
   </body>
 </html>
+
+<!--
+  // Example of updating button properties for book with status 'shelf'
+const status0 = document.getElementById('status0');
+const reserve0 = document.getElementById('reserve0');
+const checkout0 = document.getElementById('checkout0');
+const checkIn0 = document.getElementById('checkIn0');
+
+document.addEventListener('DOMContentLoaded', function () {
+    status0.style.color = STATUS_MAP.shelf.color;
+    reserve0.disabled = !STATUS_MAP.shelf.canReserve;
+    checkout0.disabled = !STATUS_MAP.shelf.canCheckout;
+    checkIn0.disabled = !STATUS_MAP.shelf.canCheckIn;
+});
+
+
+// Example of updating button properties for book with status 'reserved'
+const status1 = document.getElementById('status1');
+const reserve1 = document.getElementById('reserve1');
+const checkout1 = document.getElementById('checkout1');
+const checkIn1 = document.getElementById('checkIn1');
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    status1.style.color = STATUS_MAP.reserved.color;
+    reserve1.disabled = !STATUS_MAP.reserved.canReserve;
+    checkout1.disabled = !STATUS_MAP.reserved.canCheckout;
+    checkIn1.disabled = !STATUS_MAP.reserved.canCheckIn;
+});
+
+-->
