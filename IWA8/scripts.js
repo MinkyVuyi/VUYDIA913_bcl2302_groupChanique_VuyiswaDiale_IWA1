@@ -38,3 +38,8 @@ const sarah = {  //added the = to assign everything in the {} to the const of sa
 }
 console.log(leo, leo.address['postal-code']) //used [] for the postal-code string to call object value
 console.log(sarah, sarah.address['postal-code'])
+
+
+
+
+
