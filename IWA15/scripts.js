@@ -8,42 +8,29 @@ const data = {
 
 // Only edit below
 
-const { first = [1] } = data.lists.find(item => item[0] === 'first') || {}
-const { second = [1] } = data.lists.find(item => item[0] === 'second') || {}
-const { third = [1] } = data.lists.find(item => item[0] === 'third') || {}
-
 const result = []
 
 const extractBiggest = () => {
-	if (first[first.length - 1] > second[second.length - 1]) {
-		return first
+	let max = Number.MIN_VALUE;
+	let maxIndex;
+	for (let i = 0; i < data.lists.length; i++) {
+		const list = data.lists[i][1];
+		if (list.length > 0 && list[list.length - 1] > max) {
+			max = list[list.length - 1];
+			maxIndex = i;
+		}
 	}
-
-	if (third[third.length - 1] < 1) {
-		return second
+	if (maxIndex !== undefined) {
+		const [, list] = data.lists[maxIndex];
+		list.pop();
+		result.push(max);
 	}
-	
-	return third
 }
 
 // Only edit above
 
-result.push(extractBiggest())
-result.push(extractBiggest())
-result.push(extractBiggest())
-result.push(extractBiggest())
-result.push(extractBiggest())
+for (let i = 0; i < 15; i++) {
+	extractBiggest();
+}
 
-result.push(extractBiggest())
-result.push(extractBiggest())
-result.push(extractBiggest())
-result.push(extractBiggest())
-result.push(extractBiggest())
-
-result.push(extractBiggest())
-result.push(extractBiggest())
-result.push(extractBiggest())
-result.push(extractBiggest())
-result.push(extractBiggest())
-
-console.log(result)
+console.log(result);
