@@ -1,33 +1,38 @@
-const order1 = document.querySelector('[data-key="order1"]');
-const order2 = document.querySelector('[data-key="order2"]');
-const order3 = document.querySelector('[data-key="order3"]');
+// script.js
 
-const biscuits1 = order1.querySelector('.biscuits .count');
-const donuts1 = order1.querySelector('.donuts .count');
-const pancakes1 = order1.querySelector('.pancakes .count');
-const status1 = order1.querySelector('.status dd');
+// Retrieve the DOM elements for Order 1
+const order1Root = document.querySelector('[data-key="order1"]');
+const order1Biscuits = order1Root.querySelector('.biscuits .count');
+const order1Donuts = order1Root.querySelector('.donuts .count');
+const order1Pancakes = order1Root.querySelector('.pancakes .count');
+const order1Status = order1Root.querySelector('.status dd');
 
-const biscuits2 = order2.querySelector('.biscuits .count');
-const donuts2 = order2.querySelector('.donuts .count');
-const pancakes2 = order2.querySelector('.pancakes .count');
-const status2 = order2.querySelector('.status dd');
+// Retrieve the DOM elements for Order 2
+const order2Root = document.querySelector('[data-key="order2"]');
+const order2Biscuits = order2Root.querySelector('.biscuits .count');
+const order2Donuts = order2Root.querySelector('.donuts .count');
+const order2Pancakes = order2Root.querySelector('.pancakes .count');
+const order2Status = order2Root.querySelector('.status dd');
 
-const biscuits3 = order3.querySelector('.biscuits .count');
-const donuts3 = order3.querySelector('.donuts .count');
-const pancakes3 = order3.querySelector('.pancakes .count');
-const status3 = order3.querySelector('.status dd');
+// Retrieve the DOM elements for Order 3
+const order3Root = document.querySelector('[data-key="order3"]');
+const order3Biscuits = order3Root.querySelector('.biscuits .count');
+const order3Donuts = order3Root.querySelector('.donuts .count');
+const order3Pancakes = order3Root.querySelector('.pancakes .count');
+const order3Status = order3Root.querySelector('.status dd');
 
-biscuits1.textContent = order1.dataset.biscuits;
-donuts1.textContent = order1.dataset.donuts;
-pancakes1.textContent = order1.dataset.pancakes;
-status1.textContent = order1.dataset.delivered === "true" ? "Delivered" : "Pending";
+// Update the innerHTML of the DOM elements with actual values from data attributes
+order1Biscuits.innerHTML = order1Root.getAttribute('data-biscuits');
+order1Donuts.innerHTML = order1Root.getAttribute('data-donuts');
+order1Pancakes.innerHTML = order1Root.getAttribute('data-pancakes');
+order1Status.innerHTML = order1Root.getAttribute('data-delivered') === 'true' ? 'Delivered' : 'Pending';
 
-biscuits2.textContent = order2.dataset.biscuits;
-donuts2.textContent = order2.dataset.donuts;
-pancakes2.textContent = order2.dataset.pancakes;
-status2.textContent = order2.dataset.delivered === "true" ? "Delivered" : "Pending";
+order2Biscuits.innerHTML = order2Root.getAttribute('data-biscuits');
+order2Donuts.innerHTML = order2Root.getAttribute('data-donuts');
+order2Pancakes.innerHTML = order2Root.getAttribute('data-pancakes');
+order2Status.innerHTML = order2Root.getAttribute('data-delivered') === 'true' ? 'Delivered' : 'Pending';
 
-biscuits3.textContent = order3.dataset.biscuits;
-donuts3.textContent = order3.dataset.donuts;
-pancakes3.textContent = order3.dataset.pancakes;
-status3.textContent = order3.dataset.delivered === "true" ? "Delivered" : "Pending";
+order3Biscuits.innerHTML = order3Root.getAttribute('data-biscuits');
+order3Donuts.innerHTML = order3Root.getAttribute('data-donuts');
+order3Pancakes.innerHTML = order3Root.getAttribute('data-pancakes');
+order3Status.innerHTML = order3Root.getAttribute('data-delivered') === 'true' ? 'Delivered' : 'Pending';
