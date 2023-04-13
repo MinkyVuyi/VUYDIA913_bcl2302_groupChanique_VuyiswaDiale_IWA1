@@ -43,8 +43,8 @@ calcUser()
 
 
  /*
- This declares a constant variable logCalc and assigns an arrow function to it. 
-*The arrow function takes no parameters and begins with an opening curly brace {, indicating the start of a function block.
+ *Declares a constant variable logCalc and assigns an arrow function to it. 
+*The arrow function takes no parameters.
 *This adds 1 to the value of calculatedAsNumber and assigns the result back to the variable calculated.
 *This line increments the value of calculated by 1.
 */ 
