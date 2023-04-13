@@ -8,4 +8,4 @@
 
 **Brief description of project**:
 
-need to extract the numbers from all three arrays in lists inside the data object and combine all values into a new single array called result.
+I had to extract the numbers from all three arrays in lists inside the data object and combine all values into a new single array called result.

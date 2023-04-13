@@ -8,7 +8,20 @@
 
 **Brief description of project**:
 
-The code should take the values provided as variables, and create logTwice function. The logTwice function should take a provided parameter and log it two times. In other words, the following should be logged in the console twice:
+I had to fix the code so that it displays the correct information as follows:
 
- 
-**Hello, John (35). I love coding!**
+Athlete: Nwabisa Masiko
+
+Total Races: 2
+
+Event Date (Latest): 19 Oct 2022
+
+Total Time (Latest): 00:30
+
+Athlete: Schalk Venter
+
+Total Races: 4
+
+Event Date (Latest): 3 Nov 2022
+
+Total Time (Latest): 00:30
