@@ -11,8 +11,18 @@ order1Donuts.textContent = order1.dataset.donuts;
 order1Pancakes.textContent = order1.dataset.pancakes;
 order1Status.textContent = order1.dataset.delivered === 'true' ? 'Delivered' : 'Pending';
 
-// Repeat the same process for order2 and order3
-// ... (same comments as above, but with order2 and order3)
+// Select the DOM elements for order2 and its child elements
+const order2 = document.querySelector('[data-key="order2"]');
+const order2Biscuits = order2.querySelector('.biscuits .count');
+const order2Donuts = order2.querySelector('.donuts .count');
+const order2Pancakes = order2.querySelector('.pancakes .count');
+const order2Status = order2.querySelector('.status');
+
+// Set the text content of order2's child elements based on their respective data attributes
+order2Biscuits.textContent = order2.dataset.biscuits;
+order2Donuts.textContent = order2.dataset.donuts;
+order2Pancakes.textContent = order2.dataset.pancakes;
+order2Status.textContent = order2.dataset.delivered === 'true' ? 'Delivered' : 'Pending';
 
 // Select all DOM elements with data-biscuits attribute
 const biscuitCounts = document.querySelectorAll('[data-biscuits]');
