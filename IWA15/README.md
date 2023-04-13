@@ -8,7 +8,4 @@
 
 **Brief description of project**:
 
-The code should take the values provided as variables, and create logTwice function. The logTwice function should take a provided parameter and log it two times. In other words, the following should be logged in the console twice:
-
- 
-**Hello, John (35). I love coding!**
+need to extract the numbers from all three arrays in lists inside the data object and combine all values into a new single array called result.
