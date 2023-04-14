@@ -1,68 +1,117 @@
-// scripts.js
+const MONTHS = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+]
 
-// Data structure containing information about athletes
 const data = {
-  NM372: {
-    id: 'NM372',
-    firstName: 'Nwabisa',
-    surname: 'Masiko',
-    lapTimes: [30, 29], // Array of lap times in minutes
+  response: {
+    requestType: "FETCH_ATHLETE_DATA",
+    requestBy: "ALL_MATCHING_ATHLETES",
+    forDisplay: "BEST_RACES",
+
+    data: {
+      NM372: {
+        firstName: "Nwabisa",
+        surname: "Masiko",
+        id: "NM372",
+        races: [
+          {
+            date: '2022-11-18T22:00:00.000Z',
+            time: [9, 7, 8, 6],
+          },
+          {
+            date: '2022-12-02T22:00:00.000Z',
+            time: [6, 7, 8, 7],
+          },
+        ],
+      },
+
+      SV782: {
+        firstName: "Schalk",
+        surname: "Venter",
+        id: "SV782",
+        races: [
+          {
+            date: '2022-11-18T22:00:00.000Z',
+            time: [10, 8, 3, 12],
+          },
+          {
+            date: '2022-11-25T22:00:00.000Z',
+            time: [6, 8, 9, 11],
+          },
+          {
+            date: '2022-12-02T22:00:00.000Z',
+            time: [10, 11, 4, 8],
+          },
+          {
+            date: '2022-12-09T22:00:00.000Z',
+            time: [9, 8, 9, 11],
+          },
+        ],
+      },
+    },
   },
-  SV782: {
-    id: 'SV782',
-    firstName: 'Schalk',
-    surname: 'Venter',
-    lapTimes: [31, 28, 29, 31], // Array of lap times in minutes
-  }
 };
 
-// Function to format minutes as HH:MM
-const formatTime = (minutes) => {
-  const hours = Math.floor(minutes / 60);
-  const mins = minutes % 60;
-  return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}`;
-};
+// Only edit below this comment
 
-// Function to format date as d MM YYYY
-const formatDate = (date) => {
-  const options = { day: 'numeric', month: 'short', year: 'numeric' };
-  return new Intl.DateTimeFormat('en-US', options).format(new Date(date));
-};
+const createHtml = (athleteId) => {
+  const athlete = data.response.data[athleteId];
+  const { firstName, surname, races } = athlete;
+  const latestRace = races[races.length - 1];
+  const { date, time } = latestRace;
+  const dateObj = new Date(date);
+  const day = dateObj.getDate();
+  const month = MONTHS[dateObj.getMonth()];
+  const year = dateObj.getFullYear();
 
-// Function to populate athlete sections with data
-const populateAthleteSections = () => {
-  const athleteSections = document.querySelectorAll('section[data-athlete]');
-  athleteSections.forEach(section => {
-    const athleteId = section.dataset.athlete;
-    const athleteData = data[athleteId];
-    if (athleteData) {
-      const fullName = `${athleteData.firstName} ${athleteData.surname}`;
-      const totalRaces = athleteData.lapTimes.length;
-      const latestRaceIndex = athleteData.lapTimes.length - 1;
-      const latestRaceDate = new Date(); // Placeholder for latest race date
-      const latestRaceTime = athleteData.lapTimes[latestRaceIndex];
-      const latestRaceFormattedDate = formatDate(latestRaceDate);
-      const latestRaceFormattedTime = formatTime(latestRaceTime);
-      
-      // Populate section with athlete information
-      section.innerHTML = `
-        <h2>${athleteData.id}</h2>
-        <dl>
-          <dt>Full Name</dt>
-          <dd>${fullName}</dd>
-          <dt>Total Races</dt>
-          <dd>${totalRaces}</dd>
-          <dt>Event Date (Latest)</dt>
-          <dd>${latestRaceFormattedDate}</dd>
-          <dt>Total Time (Latest)</dt>
-          <dd>${latestRaceFormattedTime}</dd>
-        </dl>
-      `;
-    } else {
-      section.innerHTML = '<p>Athlete data not found</p>';
-    }
-  });
-};
+  const total = time.reduce((acc, lapTime) => acc + lapTime, 0);
+  const hours = Math.floor(total / 60);
+  const minutes = total % 60;
 
-// Call the function to populate athlete sections with data
-populateAthleteSections();
+  const fragment = document.createDocumentFragment();
+
+  const title = document.createElement('h2');
+  title.textContent = `Athlete: ${firstName} ${surname}`;
+  fragment.appendChild(title);
+
+  const list = document.createElement('dl');
+
+  list.innerHTML = /* html */ `
+    <dt>Full Name</dt>
+    <dd>${firstName} ${surname}</dd>
+
+    <dt>Total Races</dt>
+    <dd>${races.length}</dd>
+
+    <dt>Event Date (Latest)</dt>
+    <dd>${day} ${month} ${year}</dd>
+
+    <dt>Total Time (Latest)</dt>
+    <dd>${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}</dd>
+  `;
+
+  fragment.appendChild(list);
+
+  return fragment;
+}
+
+const sectionElements = document.querySelectorAll('section[data-athlete]');
+
+sectionElements.forEach(section => {
+  const athleteId = section.dataset.athlete;
+  const htmlFragment = createHtml(athleteId);
+  section.innerHTML = '';
+  section.appendChild(htmlFragment);
+});
+
