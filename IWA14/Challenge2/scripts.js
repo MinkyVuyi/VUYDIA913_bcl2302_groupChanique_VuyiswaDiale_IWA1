@@ -1,14 +1,17 @@
-function add(a, b) {
+function add(a, b) { //fixed the syntax so that it will return the sum of a and b
     return a + b;
   }
   
-  function multiply(a, b) {
+  function multiply(a, b) { //fixed the code to return the multiplication of a and b
     return a * b;
   }
   
   function internal() {
-    const added = this.add(this.internal.a, this.internal.b);
+      // Get the values of `a` and `b` from the `internal` object
+    const added = this.add(this.internal.a, this.internal.b); 
+    // Multiply `added` by the value of `c` from the `internal` object
     console.log(added * this.internal.c);
+    // Return `this` to allow for method chaining
     return this;
   }
 

@@ -1,0 +1,106 @@
+/* Reset default styles */
+body,
+button,
+input,
+select,
+textarea {
+margin: 0;
+padding: 0;
+font-family: Arial, sans-serif;
+}
+
+/* Grid container */
+.grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 1rem;
+max-width: 1200px;
+margin: 0 auto;
+padding: 2rem;
+}
+
+/* Grid columns */
+.grid__column {
+background-color: #f8f8f8;
+padding: 1rem;
+border-radius: 4px;
+}
+
+/* Grid title */
+.grid__title {
+font-size: 1.5rem;
+font-weight: bold;
+margin-bottom: 1rem;
+}
+
+/* Grid list */
+.grid__list {
+list-style-type: none;
+padding: 0;
+}
+
+/* Grid list item */
+.grid__list-item {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #ffffff;
+padding: 1rem;
+margin-bottom: 1rem;
+border-radius: 4px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Grid list item title */
+.grid__list-item-title {
+font-weight: bold;
+}
+
+/* Grid list item table */
+.grid__list-item-table {
+font-size: 0.875rem;
+color: #666666;
+}
+
+/* Grid list item status */
+.grid__list-item-status {
+font-size: 0.875rem;
+color: #999999;
+}
+
+/* Overlay */
+.overlay {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+background-color: rgba(0, 0, 0, 0.5);
+z-index: 9999;
+opacity: 0;
+pointer-events: none;
+transition: opacity 0.3s ease-in-out;
+}
+
+/* Overlay title */
+.overlay__title {
+font-size: 1.5rem;
+font-weight: bold;
+margin-bottom: 1rem;
+}
+
+/* Overlay form */
+.overlay__form {
+display: grid;
+gap: 1rem;
+}
+
+/* Overlay field */
+.overlay__field {
+display: grid;
+gap: 0.25rem;
+}
