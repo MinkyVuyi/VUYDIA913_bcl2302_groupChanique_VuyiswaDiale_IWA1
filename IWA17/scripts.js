@@ -60,9 +60,9 @@ const createCell = (day, isToday) => {
 	const cell = document.createElement('td');
 	cell.classList.add('table__cell');
 
-	if (day !== null) {
+	if (day !== null) { //This is to check if day is not null
 		cell.innerText = day;
-		if (isToday) {
+		if (isToday) {// Check if isToday is true
 			cell.classList.add('table__cell_today');
 		}
 	} 
@@ -99,3 +99,4 @@ const current = new Date();
 document.querySelector('[data-title]').innerText = `${MONTHS[current.getMonth()]} ${current.getFullYear()}`;
 
 createHtml();
+
