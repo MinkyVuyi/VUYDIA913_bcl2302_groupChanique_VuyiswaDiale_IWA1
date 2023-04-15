@@ -79,6 +79,22 @@ const createHtml = (athleteId) => {
   const hours = Math.floor(total / 60);
   const minutes = total % 60;
 
+  /*
+* Get athlete data from the response data using athleteId
+* Destructure athlete object to get firstName, surname, and races
+* Get the latest race from the races array
+* Destructure latestRace object to get date and time
+* Create a Date object from the date string
+* Get the day of the month
+* Get the month name from the MONTHS array using the month index
+* Get the year
+
+* Calculate the total time by summing up all lap times in the time array
+* Calculate the hours by dividing total time by 60 and rounding down
+* Calculate the remaining minutes by taking the total time modulo 60
+
+*/
+
   const fragment = document.createDocumentFragment();
 
   const title = document.createElement('h2');

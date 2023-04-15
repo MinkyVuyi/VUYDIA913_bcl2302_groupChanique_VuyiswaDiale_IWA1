@@ -7,6 +7,8 @@
     <title>Kitchen Express</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="scripts.js" defer type="module"></script>
+    <script src="data.js" defer type="module"></script>
+    <script src="view.js" defer type="module"></script>
   </head>
 
   <body>
@@ -34,7 +36,7 @@
       <form class="overlay__form" data-add-form id="add-form">
         <label class="overlay__field">
           <div class="overlay__label">Item</div>
-          <input class="overlay__input" data-add-title name="title" required></input>
+          <input class="overlay__input" data-add-title name="title" required>
         </label>
 
         <label class="overlay__field">
@@ -56,11 +58,11 @@
       </div>
 
       <form class="overlay__form" data-edit-form id="edit-form">
-        <input hidden name="id" data-edit-id></input>
+        <input hidden name="id" data-edit-id>
 
         <label class="overlay__field">
           <div class="overlay__label">Item</div>
-          <input class="overlay__input" data-edit-title name="title" required></input>
+          <input class="overlay__input" data-edit-title name="title" required>
         </label>
 
         <label class="overlay__field">
@@ -89,4 +91,22 @@
 
     <div class="grid" data-grid>
       <section class="grid__column" data-area="ordered">
-        <h2 class="grid__title">
+        <h2 class="grid__title">🤵 Ordered</h2>
+        <div class="grid__content" data-column="ordered"></div>
+      </section>
+
+      <section class="grid__column" data-area="preparing">
+        <h2 class="grid__title">👩‍🍳 Preparing</h2>
+        <div class="grid__content" data-column="preparing"></div>
+      </section>
+
+      <section class="grid__column grid__column_last" data-area="served">
+        <h2 class="grid__title">👩‍💼 Served</h2>
+        <div class="grid__content" data-column="served"></div>
+      </section>
+    </div>
+
+    <button class="help" data-help>?</button>
+    <div class="backdrop"></div>
+  </body>
+</html>
