@@ -33,4 +33,4 @@ order2Status.innerHTML = order2Root.getAttribute('data-delivered') === 'true' ? 
 order3Biscuits.innerHTML = order3Root.getAttribute('data-biscuits'); // Set the biscuits count in Order 3
 order3Donuts.innerHTML = order3Root.getAttribute('data-donuts'); // Set the donuts count in Order 3
 order3Pancakes.innerHTML = order3Root.getAttribute('data-pancakes'); // Set the pancakes count in Order 3
-order3Status.innerHTML = order3Root.getAttribute('data-delivered') === '
+order3Status.innerHTML = order3Root.getAttribute('data-delivered') === 'true' ? 'Delivered' : 'Pending'; // Set the status in Order 3

@@ -53,12 +53,12 @@ const futureId = 9;
 
 // Do not change code above this comment
 
-if (futureId in holidays) { /*used if statement to check if a variable futureId exists in an holidays array or object*/
+if (futureId in holidays) { //used if statement to check if a variable futureId exists in an holidays array or object
     console.log(holidays[futureId].name);
   } else {
     console.log(`ID ${futureId} not created yet`);
   }
-   /*Access the name property of the corresponding object in holidays and log its value*/
+   //Access the name property of the corresponding object in holidays and log its value
 
 
 let copied = { ...holidays[christmas] }; /*using the spread syntax (...) to create a shallow copy of the properties of the christmas object*/
@@ -73,7 +73,6 @@ console.log(`ID change: ${holidays[christmas].name === copied.name}`);
 console.log(`Name change: ${copied.name}`);
 console.log(`Date change: ${correctDate.toLocaleDateString('en-GB')}`);
 
-// Get first holiday in the year
 
  //Calculate the minimum timestamp of holidays
 const firstHolidayTimestamp = Math.min(
@@ -101,17 +100,18 @@ const lastHolidayTimestamp = Math.max(
     holidays[8].date.getTime, // Access the "date" property of the ninth holiday object and get its timestamp
 );
 
-const holidayIds = Object.keys(holidays).map(Number);
+// To get the first holiday in the year
+const holidayIds = Object.keys(holidays).map(Number); 
 const firstHolidayId = Math.min(...holidayIds);
 const firstHolidayDate = holidays[3].date;
 console.log(`First holiday in the year: ${firstHolidayDate.toLocaleDateString('en-GB')}`);
 
-// Get last holiday in the year
+// To get last holiday in the year
 const lastHolidayId = Math.max(...holidayIds);
 const lastHolidayDate = holidays[2].date;
 console.log(`Last holiday in the year: ${lastHolidayDate.toLocaleDateString('en-GB')}`);
 
-// Get random holiday date
+// To get random holiday date
 const randomHolidayId = holidayIds[Math.floor(Math.random() * holidayIds.length)];
 const randomHolidayDate = holidays[randomHolidayId].date;
 console.log(`Random holiday date: ${randomHolidayDate.toLocaleDateString('en-GB')}`);

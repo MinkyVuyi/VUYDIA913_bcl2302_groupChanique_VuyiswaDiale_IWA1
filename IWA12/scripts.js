@@ -24,6 +24,8 @@ const STATUS_MAP = {
       canCheckIn: true,
     }
   };
+  
+  // Edit below line 
 
   // Select all the elements
   const statusElements = document.querySelectorAll('.status');
