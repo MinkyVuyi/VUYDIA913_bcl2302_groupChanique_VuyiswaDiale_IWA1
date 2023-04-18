@@ -1,3 +1,4 @@
+
 const MONTHS = [
 	'January',
 	'February',
@@ -13,7 +14,7 @@ const MONTHS = [
 	'December',
 ];
 
-const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();
+const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate()
 
 // Only edit below
 
@@ -99,4 +100,3 @@ const current = new Date();
 document.querySelector('[data-title]').innerText = `${MONTHS[current.getMonth()]} ${current.getFullYear()}`;
 
 createHtml();
-

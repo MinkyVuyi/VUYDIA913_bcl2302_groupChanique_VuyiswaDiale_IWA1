@@ -1,59 +1,172 @@
-/**
- * A handler that fires when a user drags over any element inside a column. In
- * order to determine which column the user is dragging over the entire event
- * bubble path is checked with `event.path` (or `event.composedPath()` for
- * browsers that don't support `event.path`). The bubbling path is looped over
- * until an element with a `data-area` attribute is found. Once found both the
- * active dragging column is set in the `state` object in "data.js" and the HTML
- * is updated to reflect the new column.
- *
- * @param {Event} event 
- */
-const handleDragOver = (event) => {
-  event.preventDefault();
-  const path = event.path || event.composedPath()
-  let column = null
+/*import { createOrderHtml } from './view.js'
+// Use the createOrderHtml function to create an order element
+const order = {
+  id: 1,
+  title: 'Order 1',
+  table: 4,
+  created: '2023-04-18'
+};
 
-  for (const element of path) {
-      const { area } = element.dataset
-      if (area) {
-          column = area
-          break;
-      }
-  }
+const orderElement = createOrderHtml(order);
 
-  if (!column) return
-  updateDragging({ over: column })
-  updateDraggingHtml({ over: column })
-}
+// Append the order element to a container element in the DOM
+const containerElement = document.getElementById('orders-container');
+containerElement.appendChild(orderElement);
+
+import { html } from './view.js'; // Update the path to the actual location of your file
+
+// Use the html object
+console.log(html.columns); // Access columns property
+console.log(html.area); // Access area property
+console.log(html.add.overlay); // Access overlay property in add object
+console.log(html.edit.form); // Access form property in edit object
+console.log(html.help.cancel); // Access cancel property in help object
+console.log(html.other.grid); // Access grid property in other object
+
+import { updateDraggingHtml } from './view.js'; // Update the path to the actual location of your file
+
+// Call the updateDraggingHtml function
+newDragging = {
+    over: 'column1'
+};
+updateDraggingHtml(newDragging);
+
+import { moveToColumn } from './view.js'; // Update the path to the actual location of your file
+
+// Call the moveToColumn function
+const id = '1234'; // Update with the actual id
+const newColumn = 'column2'; // Update with the actual newColumn
+moveToColumn(id, newColumn);
+
+import { COLUMNS } from './view.js'; // Update the path to the actual location of your file
+
+// Now you can use the COLUMNS constant in your code
+console.log(COLUMNS); // ['ordered', 'preparing', 'served']
+
+import { state } from './data.js'; // Update the path to the actual location of your file
+
+// Now you can use the state object in your code
+console.log(state); // { orders: {}, dragging: { source: null, over: null } }
+
+import { createOrderData } from './data.js'; // Update the path to the actual location of your file
+
+// Now you can use the createOrderData function in your code
+const orderData = createOrderData({ title: 'Order 1', table: 'Table 1', column: 'ordered' });
+console.log(orderData); // { title: 'Order 1', table: 'Table 1', column: 'ordered', id: 'uniqueId', created: 'currentDateAndTime' }
+
+import { updateDragging } from './path/to/yourFile.js'; // Update the path to the actual location of your file
+
+// Now you can use the updateDragging function in your code
+const newDragging = { source: 'sourceId', over: 'overColumn' };
+updateDragging(newDragging);
 
 
-const handleDragStart = (event) => {}
-const handleDragEnd = (event) => {}
-const handleHelpToggle = (event) => {}
-const handleAddToggle = (event) => {}
-const handleAddSubmit = (event) => {}
-const handleEditToggle = (event) => {}
-const handleEditSubmit = (event) => {}
-const handleDelete = (event) => {}
+document.addEventListener('DOMContentLoaded', () => {
+  const helpButton = document.querySelector('[data-help]');
+  const helpOverlay = document.querySelector('[data-help-overlay]');
+  const helpCloseButton = document.querySelector('[data-help-cancel]');
 
-html.add.cancel.addEventListener('click', handleAddToggle)
-html.other.add.addEventListener('click', handleAddToggle)
-html.add.form.addEventListener('submit', handleAddSubmit)
+  // Show help overlay when help button is clicked
+  helpButton.addEventListener('click', () => {
+    helpOverlay.classList.add('overlay__visible');
+  });
 
-html.other.grid.addEventListener('click', handleEditToggle)
-html.edit.cancel.addEventListener('click', handleEditToggle)
-html.edit.form.addEventListener('submit', handleEditSubmit)
-html.edit.delete.addEventListener('click', handleDelete)
+  // Hide help overlay when close button is clicked
+  helpCloseButton.addEventListener('click', () => {
+    helpOverlay.classList.remove('overlay__visible');
+  });
 
-html.help.cancel.addEventListener('click', handleHelpToggle)
-html.other.help.addEventListener('click', handleHelpToggle)
+  // Hide help overlay when backdrop is clicked
+  document.addEventListener('click', (event) => {
+    if (event.target === helpOverlay) {
+      helpOverlay.classList.remove('overlay__visible');
+    }
+  });
+});
+*/
+import { createOrderHtml } from './view.js'
+// Use the createOrderHtml function to create an order element
+const order = {
+  id: 1,
+  title: 'Order 1',
+  table: 4,
+  created: '2023-04-18'
+};
 
-for (const htmlColumn of Object.values(html.columns)) {
-  htmlColumn.addEventListener('dragstart', handleDragStart)
-  htmlColumn.addEventListener('dragend', handleDragEnd)
-}
+const orderElement = createOrderHtml(order);
 
-for (const htmlArea of Object.values(html.area)) {
-  htmlArea.addEventListener('dragover', handleDragOver)
-}
+// Append the order element to a container element in the DOM
+const containerElement = document.getElementById('orders-container');
+containerElement.appendChild(orderElement);
+
+import { html } from './view.js'; // Update the path to the actual location of your file
+
+// Use the html object
+console.log(html.columns); // Access columns property
+console.log(html.area); // Access area property
+console.log(html.add.overlay); // Access overlay property in add object
+console.log(html.edit.form); // Access form property in edit object
+console.log(html.help.cancel); // Access cancel property in help object
+console.log(html.other.grid); // Access grid property in other object
+
+import { updateDraggingHtml } from './view.js'; // Update the path to the actual location of your file
+
+// Call the updateDraggingHtml function
+newDragging = {
+    over: 'column1'
+};
+updateDraggingHtml(newDragging);
+
+import { moveToColumn } from './view.js'; // Update the path to the actual location of your file
+
+// Call the moveToColumn function
+const id = '1234'; // Update with the actual id
+const newColumn = 'column2'; // Update with the actual newColumn
+moveToColumn(id, newColumn);
+
+import { COLUMNS } from './view.js'; // Update the path to the actual location of your file
+
+// Now you can use the COLUMNS constant in your code
+console.log(COLUMNS); // ['ordered', 'preparing', 'served']
+
+import { state } from './data.js'; // Update the path to the actual location of your file
+
+// Now you can use the state object in your code
+console.log(state); // { orders: {}, dragging: { source: null, over: null } }
+
+import { createOrderData } from './data.js'; // Update the path to the actual location of your file
+
+// Now you can use the createOrderData function in your code
+const orderData = createOrderData({ title: 'Order 1', table: 'Table 1', column: 'ordered' });
+console.log(orderData); // { title: 'Order 1', table: 'Table 1', column: 'ordered', id: 'uniqueId', created: 'currentDateAndTime' }
+
+import { updateDragging } from './path/to/yourFile.js'; // Update the path to the actual location of your file
+
+// Now you can use the updateDragging function in your code
+const newDragging = { source: 'sourceId', over: 'overColumn' };
+updateDragging(newDragging);
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const helpButton = document.querySelector('[data-help]');
+  const helpOverlay = document.querySelector('[data-help-overlay]');
+  const helpCloseButton = document.querySelector('[data-help-cancel]');
+
+  // Show help overlay when help button is clicked
+  helpButton.addEventListener('click', () => {
+    helpOverlay.classList.add('overlay__visible');
+  });
+
+  // Hide help overlay when close button is clicked
+  helpCloseButton.addEventListener('click', () => {
+    helpOverlay.classList.remove('overlay__visible');
+  });
+
+  // Hide help overlay when backdrop is clicked
+  document.addEventListener('click', (event) => {
+    if (event.target === helpOverlay) {
+      helpOverlay.classList.remove('overlay__visible');
+    }
+  });
+});
+
