@@ -3,12 +3,21 @@
  * configured before the app is started, and allows the app to be used in
  * different environments.
  */
-// File: main.js
-
-const TABLES = require('./tables.js');
-
-// Use TABLES array as needed
-console.log(TABLES); // Output: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13']
+export const TABLES = [
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    '11',
+    '12',
+    '13'
+]
 
 /**
  * The different states that an order can be in. This can not be configured
@@ -93,4 +102,3 @@ export const updateDragging = (newDragging) => {
         over,
     }
 }
-    
