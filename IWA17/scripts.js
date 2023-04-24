@@ -14,7 +14,7 @@ const MONTHS = [
 	'December',
 ];
 
-const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate()
+const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate() // Changed this code to remove the getfullYear
 
 // Only edit below
 
