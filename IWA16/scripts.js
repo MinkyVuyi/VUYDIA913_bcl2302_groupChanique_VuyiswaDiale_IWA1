@@ -124,6 +124,6 @@ const createHtml = (athlete) => { //the argument was not being passed correctly
 };
 /* Loop through the valuesArray.
 * call the "createHtml" function on each value
-*/
+*/  
 Object.values(data.response.data).forEach(createHtml);
 
