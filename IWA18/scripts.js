@@ -132,3 +132,22 @@ const orderElement = document.getElementById(id);
 const newColumnElement = document.querySelector(`#${newColumn} .column__content`);
 newColumnElement.appendChild(orderElement); 
 
+
+
+// Select the "Help" button
+const helpBtn = document.querySelector('[data-help]');
+const closeBtn = document.querySelector('[data-help-cancel]')
+const addOrderButton = document.querySelector('.button')
+
+// Add a click event listener to the "Help" button
+helpBtn.addEventListener('click', () => {
+  // Show the "Help" overlay
+  const helpOverlay = document.querySelector('[data-help-overlay]');
+  helpOverlay.showModal();
+
+  closeBtn.addEventListener('click', () => {
+    helpOverlay.close()
+    addOrderButton.focus()
+
+  })
+});
