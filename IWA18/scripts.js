@@ -43,7 +43,7 @@ for (const htmlColumn of Object.values(html.columns)) {
 
 const handleDragEnd = (event) => {
   event.preventDefault();
-  
+  if 
 }
 for (const htmlColumn of Object.values(html.columns)) {
   htmlColumn.addEventListener('dragend', handleDragEnd );
@@ -166,6 +166,8 @@ html.other.grid.addEventListener('click', handleEditToggle);
 //Submit Changes
 const handleEditSubmit = (event) => {
   event.preventDefault();
+html.edit.form.orderHtml = createOrderData('active');
+
   const formData = new FormData(event.target);
   const id = formData.get('id');
   const column = formData.get('column');
@@ -176,7 +178,7 @@ const handleEditSubmit = (event) => {
 
   // Remove the order from the current column's HTML area and append it to the new column's area
   const currentColumn = html.columns[order.status];
-  const newColumn = html.columns[column];
+  const newColumn = html.columns[COLUMNS];
   const orderHtml = currentColumn.querySelector(`[data-order-id="${id}"]`);
   orderHtml.remove();
   newColumn.querySelector('[data-area]').appendChild(orderHtml);
