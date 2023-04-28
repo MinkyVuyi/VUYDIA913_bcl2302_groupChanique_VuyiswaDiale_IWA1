@@ -10,37 +10,45 @@ import { createOrderHtml, html, updateDraggingHtml, moveToColumn } from "./view.
  * is updated to reflect the new column.
  *
  * @param {Event} event 
-*/
+ */
 const handleDragOver = (event) => {
   event.preventDefault();
   const path = event.path || event.composedPath()
   let column = null
 
   for (const element of path) {
-    const { area } = element.dataset
-    if (area) {
-      column = area
-      break;
-    }
+      const { area } = element.dataset
+      if (area) {
+          column = area
+          break;
+      }
   }
 
   if (!column) return
   updateDragging({ over: column })
   updateDraggingHtml({ over: column })
-  htmlArea.addEventListener('dragover', handleDragOver);
 }
-/*
-const handleDragStart = () => {
 
+for (const htmlArea of Object.values(html.area)) {
+  htmlArea.addEventListener('dragover', handleDragOver)
 }
-htmlColumn.addEventListener('dragstart', handleDragStart);
 
-
-const handleDragEnd = () => {
+const handleDragStart = (event) => {
+event.preventDefault();
 
 }
-htmlColumn.addEventListener('dragend', handleDragEnd);
-*/
+for (const htmlColumn of Object.values(html.columns)) {
+    htmlColumn.addEventListener('dragstart', handleDragStart)
+  }
+
+const handleDragEnd = (event) => {
+  event.preventDefault();
+  
+}
+for (const htmlColumn of Object.values(html.columns)) {
+  htmlColumn.addEventListener('dragend', handleDragEnd );
+}
+
 
 //Open Help Overlay
 
@@ -75,7 +83,7 @@ html.other.help.addEventListener('click', handleHelpToggle);
 
 //Close Help Overlay
 
-const handleHelpToggle1 = (_event) => {
+const handleHelpToggle1 = () => {
   html.help.overlay.toggleAttribute('open');
 
   if (!html.help.overlay.open) {
@@ -143,13 +151,11 @@ const handleAddCancel = (event) => {
   // Close overlay
   html.add.overlay.removeAttribute('open');
 }
-
 html.add.form.addEventListener('submit', handleAddSubmit);
 html.add.cancel.addEventListener('click', handleAddCancel);
 
 
 //Editing orders
-
 
 //Edit Order overlay Open
 const handleEditToggle = () => {
@@ -157,44 +163,31 @@ const handleEditToggle = () => {
 };
 html.other.grid.addEventListener('click', handleEditToggle);
 
-/*
 //Submit Changes
-const handleEditOrder = (event) => {
+const handleEditSubmit = (event) => {
   event.preventDefault();
+  const formData = new FormData(event.target);
+  const id = formData.get('id');
+  const column = formData.get('column');
 
-  const form = event.target;
-  const orderId = form.querySelector('[data-edit-id]').value;
-  const title = form.querySelector('[data-edit-title]').value;
-  const table = form.querySelector('[data-edit-table]').value;
-  const column = form.querySelector('[data-edit-column]').value;
+  // Update the order's status in the orders array
+  const order = state.orders.find(order => order.id === id);
+  order.status = column;
 
-  const order = state.orders.find((order) => order.id === orderId);
-  order.title = title;
-  order.table = table;
-  order.column = column;
+  // Remove the order from the current column's HTML area and append it to the new column's area
+  const currentColumn = html.columns[order.status];
+  const newColumn = html.columns[column];
+  const orderHtml = currentColumn.querySelector(`[data-order-id="${id}"]`);
+  orderHtml.remove();
+  newColumn.querySelector('[data-area]').appendChild(orderHtml);
 
-  const orderElement = document.querySelector(`[data-id="${orderId}"]`);
-  orderElement.querySelector('[data-order-title]').textContent = title;
-  orderElement.querySelector('[data-order-table]').textContent = table;
+  // Hide the edit overlay
+  html.edit.overlay.close();
+};
 
-  form.reset();
-  event.target.closest('[data-edit-overlay]').close();
-}
+// add an event listener to the "submit" button in the "Edit Order" form
+html.edit.form.addEventListener('submit', handleEditSubmit);
 
-document.addEventListener('submit', (event) => {
-  if (event.target.matches('[data-edit-form]')) {
-    handleEditOrder(event);
-  };
-});
-
-
-//Delete button
-const handleDelete = () => {
-  html.edit.overlay.close(); // close the Edit Order overlay
-
-}
-html.edit.delete.addEventListener('click', handleDelete);
-*/
 //Cancel Button
 const handleEditToggleCancel = () => {
   html.edit.overlay.close();
