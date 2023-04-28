@@ -33,22 +33,66 @@ for (const htmlArea of Object.values(html.area)) {
   htmlArea.addEventListener('dragover', handleDragOver)
 }
 
-const handleDragStart = (event) => {
-event.preventDefault();
+let draggedOrder = null;
 
-}
-for (const htmlColumn of Object.values(html.columns)) {
-    htmlColumn.addEventListener('dragstart', handleDragStart)
+const handleDragStart = (event) => {
+  event.preventDefault();
+  draggedOrder = event.target;
+};
+
+const handleDragEnter = (event) => {
+  event.preventDefault();
+  if (event.target.classList.contains('column')) {
+    event.target.classList.add('highlight');
   }
+};
+
+const handleDragLeave = (event) => {
+  event.preventDefault();
+  if (event.target.classList.contains('column')) {
+    event.target.classList.remove('highlight');
+  }
+};
+
+const handleDrop = (event) => {
+  event.preventDefault();
+  const targetColumn = event.target.closest('.column');
+  if (targetColumn && targetColumn !== draggedOrder.parentElement) {
+    targetColumn.appendChild(draggedOrder);
+  }
+};
 
 const handleDragEnd = (event) => {
   event.preventDefault();
-  if 
-}
+  for (const htmlColumn of Object.values(html.columns)) {
+    htmlColumn.classList.remove('highlight');
+  }
+  draggedOrder = null;
+};
+
+// Add event listeners for drag-and-drop events on all columns
 for (const htmlColumn of Object.values(html.columns)) {
-  htmlColumn.addEventListener('dragend', handleDragEnd );
+  htmlColumn.addEventListener('dragstart', handleDragStart);
+  htmlColumn.addEventListener('dragenter', handleDragEnter);
+  htmlColumn.addEventListener('dragleave', handleDragLeave);
+  htmlColumn.addEventListener('drop', handleDrop);
+  htmlColumn.addEventListener('dragend', handleDragEnd);
 }
 
+
+  /*const handleDragEnd = (event) => {
+    event.preventDefault();
+    // Remove highlight class from all columns
+    for (const htmlColumn of Object.values(html.columns)) {
+      htmlColumn.classList.remove('highlight');
+    }
+  };
+  
+  // Add event listener for dragend on all columns
+  for (const htmlColumn of Object.values(html.columns)) {
+    htmlColumn.addEventListener('dragend', handleDragEnd );
+  }
+*/
 
 //Open Help Overlay
 
