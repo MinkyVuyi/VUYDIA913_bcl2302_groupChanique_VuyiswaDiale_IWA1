@@ -12,8 +12,10 @@ const MONTHS = [
     'November',
     'December',
 ];
-const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate()
+const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();
+
 // Only edit below
+
 //Note, for me to be able to fix this, I had to change most of the code if not all of it.
 const createData = () => { //added const to createData and assigned it to the following variables
     // Bellow are the variables that were assigned by the createData constant
@@ -23,6 +25,7 @@ const createData = () => { //added const to createData and assigned it to the fo
     const daysInMonth = getDaysInMonth(year, month);
     const weeks = [];
     let week = [];
+    
     // Find the first day of the month
     const firstDay = new Date(year, month, 1).getDay();
     // Offset for starting week from Monday
@@ -78,6 +81,7 @@ const createHtml = () => {
     }
 }
 // Only edit above
+
 const current = new Date();
 document.querySelector('[data-title]').innerText = `${MONTHS[current.getMonth()]} ${current.getFullYear()}`;
 createHtml();
