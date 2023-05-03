@@ -1,5 +1,5 @@
-import { COLUMNS, state, updateDragging, createOrderData, TABLES } from "./data.js";
-import { createOrderHtml, html, updateDraggingHtml, moveToColumn } from "./view.js";
+import {state, updateDragging, createOrderData} from "./data.js";
+import {createOrderHtml, html, updateDraggingHtml} from "./view.js";
 /**
  * A handler that fires when a user drags over any element inside a column. In
  * order to determine which column the user is dragging over the entire event
@@ -61,7 +61,7 @@ const handleAddToggle = () => {
 html.other.add.addEventListener("click", handleAddToggle);
 html.add.cancel.addEventListener("click", handleAddToggle);
 
-//---Submit information ----
+//Submit information
 const handleAddSubmit = (event) => {
   event.preventDefault(); // method is used to prevent the browser from executing the default action
   const order = {
@@ -77,14 +77,14 @@ const handleAddSubmit = (event) => {
 };
 html.add.form.addEventListener("submit", handleAddSubmit);
 
-//----- Opens edit menu -----
+//Opens Edit Order overlay
 const handleEditToggle = () => {
   html.edit.overlay.toggleAttribute("open");
 };
 html.other.grid.addEventListener("click", handleEditToggle);
 html.edit.cancel.addEventListener("click", handleEditToggle);
 
-//----- Submit edited information -----
+//Submit Edited Order
 const handleEditSubmit = (event) => {
   event.preventDefault(); // method is used to prevent the browser from executing the default action
   const { id, title, table, created, column } = {
@@ -111,11 +111,12 @@ const handleEditSubmit = (event) => {
   // Update the order element with the new data
   const newOrder = createOrderHtml(order);
   const oldOrder = document.querySelector(`[data-id="${id}"]`);
-  oldOrder.replaceWith(newOrder);
+  oldOrder.replaceWith(newOrder); 
+
   // Move the order element to the correct column in the HTML
-  switch (column) {
+  switch (column) { 
     case "ordered":
-      html.area.ordered.append(newOrder);
+      html.area.ordered.append(newOrder); //append to add newOrder in the html area
       break;
     case "preparing":
       html.area.preparing.append(newOrder);
@@ -130,7 +131,7 @@ const handleEditSubmit = (event) => {
 };
 html.edit.form.addEventListener("submit", handleEditSubmit);
 
-//--------Delete--------
+//Delete
 const handleDelete = (event) => {
   event.preventDefault(); // method is used to prevent the browser from executing the default action
   const { id, title, table, created, column } = {
@@ -141,19 +142,19 @@ const handleDelete = (event) => {
     column: html.edit.column.value,
   };
   const order = { id, title, table, created, column };
+
   // Find the index of the order to be updated
-  let orderId = -1; //-1 allows us to check if an order index has been found
   // Find the order element in the HTML
   for (let i = 0; i < state.orders.length; i++) {
     if (state.orders[i].id === id) {
-      orderId = i;
       break;
     }
   }
+
   // Delete the order element with the new data
   const newOrder = createOrderHtml(order);
   const oldOrder = document.querySelector(`[data-id="${id}"]`);
-  oldOrder.remove(newOrder);
+  oldOrder.remove(newOrder); 
   html.edit.overlay.close();
 };
 html.edit.delete.addEventListener("click", handleDelete);
