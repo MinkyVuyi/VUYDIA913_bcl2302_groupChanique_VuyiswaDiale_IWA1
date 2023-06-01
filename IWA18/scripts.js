@@ -47,14 +47,14 @@ for (const htmlArea of Object.values(html.area)){
 }
 
 
-//----Opens Help screen -----
+//Opens Help screen
 const handleHelpToggle = () => {
   html.help.overlay.toggleAttribute("open");
 };
 html.help.cancel.addEventListener("click", handleHelpToggle);
 html.other.help.addEventListener("click", handleHelpToggle);
 
-//------Opens Add order menu------
+//Opens Add order menu
 const handleAddToggle = () => {
   html.add.overlay.toggleAttribute("open");
 };
@@ -99,6 +99,7 @@ const handleEditSubmit = (event) => {
   // Find the index of the order to be updated
   let orderId = -1; //-1 allows us to check if an order index has been found
   // Find the order element in the HTML
+  
   for (let i = 0; i < state.orders.length; i++) {
     if (state.orders[i].id === id) {
       orderId = i;

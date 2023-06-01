@@ -17,6 +17,7 @@ const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();
 // Only edit below
 
 //Note, for me to be able to fix this, I had to change most of the code if not all of it.
+
 const createData = () => { //added const to createData and assigned it to the following variables
     // Bellow are the variables that were assigned by the createData constant
     const current = new Date();
