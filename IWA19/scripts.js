@@ -1,5 +1,4 @@
-
-import { books, authors, BOOKS_PER_PAGE, genres } from "./data.js";
+import { BOOKS_PER_PAGE, authors, books, genres } from "./data.js";
 
 const matches = books
 let page = 1;
@@ -22,7 +21,7 @@ let showMore = page * BOOKS_PER_PAGE;
 
 // Responsible for show more title
 moreBooks.innerHTML = /* html */ [
-  `<span>Show more</span>`,
+  `<span>Show More</span>`,
   `<span class="list__remaining">${
     matches.length - showMore > 0 ? matches.length - showMore : 0}</span>`,
   ]
@@ -273,7 +272,7 @@ settingsBtn.addEventListener('click', (event) => {
 })
 
 
-// Enabling the Save Button to change the backgound
+// Enabling the Save Button to change the background
 const css = {
   day: {
     dark: '10, 10, 20',
